@@ -6,6 +6,37 @@ import google.generativeai as genai
 # -------------------------------
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
+# 🎨 Custom CSS for background
+# -------------------------------
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* makes default text white for visibility */
+}
+
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0); /* transparent header */
+}
+
+[data-testid="stToolbar"] {
+    right: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6, label, .stMarkdown, .stTextInput, .stSelectbox, .stNumberInput, .stTextArea {
+    color: white !important; /* force text to be readable */
+}
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
+
 # Choose the Gemini model
 model = genai.GenerativeModel("gemini-1.5-flash")
 
@@ -53,3 +84,4 @@ if st.button("Generate Plan"):
             st.write(response.text)
     else:
         st.warning("Please enter a destination first!")
+
