@@ -38,7 +38,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 # Choose the Gemini model
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 # -------------------------------
 # 🎨 Streamlit UI
@@ -84,4 +84,5 @@ if st.button("Generate Plan"):
             st.write(response.text)
     else:
         st.warning("Please enter a destination first!")
+
 
